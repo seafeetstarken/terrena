@@ -40,6 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            // Se bateu no fim do scroll, força a ativação da última seção
+            const isAtBottom = (mainContent.scrollTop + mainContent.clientHeight) >= (mainContent.scrollHeight - 20);
+            if (isAtBottom && docSections.length > 0) {
+                currentActiveSectionId = docSections[docSections.length - 1].getAttribute('id');
+            }
+
             if (currentActiveSectionId) {
                 navLinks.forEach(link => {
                     const href = link.getAttribute('href');
